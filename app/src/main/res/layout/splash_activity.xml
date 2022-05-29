@@ -18,9 +18,10 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:background="#FFFFFF"
         android:indeterminate="false"
         android:max="100"
         android:progress="1"
