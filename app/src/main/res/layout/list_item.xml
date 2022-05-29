@@ -9,7 +9,7 @@
         android:id="@+id/courseImg"
         android:layout_width="140dp"
         android:layout_height="120dp"
-        android:padding="8dp"
+        android:padding="2dp"
         android:src="@mipmap/ic_launcher_round" />
 
     <LinearLayout
@@ -19,8 +19,9 @@
         android:layout_gravity="center">
         <TextView
             android:id="@+id/MovieName"
-            android:text="courseName"
-            android:textSize="20sp"
+            android:text="Movie Name"
+            android:textSize="25sp"
+            android:textColor="@color/background"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
