@@ -2,10 +2,10 @@ package com.example.ashva;
 
 public class ModelClass {
     String movie_name;
-    double rating;
+    String rating;
     int image;
 
-    public ModelClass(String movie_name, double rating, int image) {
+    public ModelClass(String movie_name, String rating, int image) {
         this.movie_name = movie_name;
         this.rating = rating;
         this.image = image;
@@ -15,7 +15,7 @@ public class ModelClass {
         return movie_name;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
