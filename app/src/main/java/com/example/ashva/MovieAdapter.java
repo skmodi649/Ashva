@@ -1,6 +1,7 @@
 package com.example.ashva;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         this.context = context;
         this.modelClass = modelClass;
 
-      //  requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
+        requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_image).error(R.drawable.loading_image);
     }
 
     @NonNull
@@ -39,7 +40,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.list_item, parent, false);
 
-        return new MovieAdapter.MyViewHolder(view); // instead of returning null, return a new MovieAdapter
+        final MyViewHolder viewHolder = new MyViewHolder(view) ;
+        return viewHolder;
     }
 
     @Override
