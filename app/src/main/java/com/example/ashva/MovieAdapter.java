@@ -10,9 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ashva.ModelClass;
-import com.example.ashva.R;
-
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
@@ -66,5 +63,4 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             rating = itemView.findViewById(R.id.movie_rating);
         }
     }
-
 }
