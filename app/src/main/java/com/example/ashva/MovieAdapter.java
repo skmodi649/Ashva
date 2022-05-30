@@ -10,15 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.ashva.models.MovieModel;
+
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     Context context;
-    ArrayList<ModelClass> modelClass;
+    ArrayList<MovieModel> modelClass;
 
-    public MovieAdapter(Context context , ArrayList<ModelClass> modelClass){
+    // RequestOption for Glide
+
+    RequestOptions requestOptions;
+
+    public MovieAdapter(Context context , ArrayList<MovieModel> modelClass){
         this.context = context;
         this.modelClass = modelClass;
+
+      //  requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }
 
     @NonNull
@@ -37,9 +47,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         // assigning values to the views we created in the recycler_view_row layout file
         // based on the position of the recycler view
 
-        holder.name.setText(modelClass.get(position).getMovie_name());
+        holder.name.setText(modelClass.get(position).getTitle());
         holder.rating.setText(modelClass.get(position).getRating());
-        holder.imageView.setImageResource(modelClass.get(position).getImage());
+
+
+        // Load Image from the internet and set it into Imageview using Glide
+
+        Glide.with(context).load(modelClass.get(position).getPoster_path()).apply(requestOptions).into(holder.imageView);
     }
 
     @Override
