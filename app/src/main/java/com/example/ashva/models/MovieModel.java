@@ -1,7 +1,6 @@
 package com.example.ashva.models;
 
 public class MovieModel {
-    private long id;
     private String title;
     private String language;
     private String overview;
@@ -9,22 +8,13 @@ public class MovieModel {
     private String release_date;
     private String rating;
 
-    public MovieModel(long id, String title, String language, String overview, String poster_path, String release_date, String rating) {
-        this.id = id;
+    public MovieModel(String title, String language, String overview, String poster_path, String release_date, String rating) {
         this.title = title;
         this.language = language;
         this.overview = overview;
         this.poster_path = poster_path;
         this.release_date = release_date;
         this.rating = rating;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTitle() {

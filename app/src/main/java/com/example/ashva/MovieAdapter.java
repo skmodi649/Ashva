@@ -41,6 +41,28 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         View view = inflater.inflate(R.layout.list_item, parent, false);
 
         final MyViewHolder viewHolder = new MyViewHolder(view) ;
+
+        // Making each row of the recycler view clickable and then passing the value to the single movie activity
+
+        viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context, Single_Movie.class);
+                i.putExtra("movie_name",modelClass.get(viewHolder.getAdapterPosition()).getTitle());
+                i.putExtra("movie_language",modelClass.get(viewHolder.getAdapterPosition()).getLanguage());
+                i.putExtra("movie_overview",modelClass.get(viewHolder.getAdapterPosition()).getOverview());
+                i.putExtra("movie_rating",modelClass.get(viewHolder.getAdapterPosition()).getRating());
+                i.putExtra("movie_poster",modelClass.get(viewHolder.getAdapterPosition()).getPoster_path());
+                i.putExtra("movie_release_date",modelClass.get(viewHolder.getAdapterPosition()).getRelease_date());
+                context.startActivity(i);
+
+            }
+        });
+
+
+
+
         return viewHolder;
     }
 
@@ -65,6 +87,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+        public View view_container;
         // grabbing the views from our recycler_view_row layout file
         // kinda like in the onCreate method
 
