@@ -6,7 +6,7 @@
     android:orientation="horizontal" >
 
     <ImageView
-        android:id="@+id/courseImg"
+        android:id="@+id/MovieImg"
         android:layout_width="140dp"
         android:layout_height="120dp"
         android:padding="2dp"
