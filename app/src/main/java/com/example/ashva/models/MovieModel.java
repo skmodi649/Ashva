@@ -25,7 +25,7 @@ public class MovieModel {
 
     public String getId() { return id; }
 
-    public void setId() { this.id = id; }
+    public void setId(String id) { this.id = this.id; }
 
     public String getTitle() {
         return title;

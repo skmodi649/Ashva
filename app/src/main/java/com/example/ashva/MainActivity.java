@@ -1,24 +1,20 @@
 package com.example.ashva;
 
+
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ashva.Adapters.RecyclerViewAdapter;
 import com.example.ashva.models.MovieModel;
 
 import org.json.JSONArray;
@@ -26,75 +22,70 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
-    public static ArrayList<MovieModel> MovieModelList = new ArrayList<>();
-    MovieModel movieModel;
-    MovieAdapter myCustomAdapter;
-    ListView listView;
+public class MainActivity extends AppCompatActivity {
+    private JsonArrayRequest request ;
+    private RequestQueue requestQueue ;
+    private ArrayList<MovieModel> movielist ;
+    private RecyclerView recyclerView ;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Attaching the adapter to the recycler view
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-        fetchData();
-
-        // Create the adapter after the models are setup
-
-        MovieAdapter adapter = new MovieAdapter(this, MovieModelList);
-        recyclerView.setAdapter(adapter);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        movielist = new ArrayList<>() ;
+
+        requestQueue = Volley.newRequestQueue(this);
+
+
+        parseJSON();
+
+
+
     }
 
-    private void fetchData(){
 
+    private void parseJSON(){
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=496624d35e26fc516f231af5af837238&language=en-US&page=1";
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                // Now we have to handle the JSON text
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    for(int i = 0;i<jsonArray.length();i++){
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = response.getJSONArray("results");
+                            for(int i = 0 ; i < jsonArray.length() ; i++){
+                                JSONObject result = jsonArray.getJSONObject(i);
 
-                        String Movie_id = jsonObject.getString("id");
-                        String Movie_name = jsonObject.getString("title");
-                        String Movie_language = jsonObject.getString("original_language");
-                        String image = jsonObject.getString("poster_path");
-                        String release_date = jsonObject.getString("release_date");
-                        String rating = jsonObject.getString("vote_average");
-                        String overview = jsonObject.getString("overview");
+                                String Title = result.getString("title");
+                                String ImageUrl = result.getString("poster_path");
+                                String Rating = String.valueOf(result.getDouble("vote_average"));
+                                String ID = String.valueOf(result.getLong("id"));
+                                String Language = result.getString("original_language");
+                                String Overview = result.getString("overview");
+                                String Release_Date = result.getString("release_date");
 
-                        movieModel = new MovieModel(Movie_id,Movie_name,Movie_language,overview,image,release_date,rating);
-                        MovieModelList.add(movieModel);
+                                movielist.add(new MovieModel(ID, Title, Language, Overview, ImageUrl, Release_Date, Rating));
+                            }
+
+                            recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, movielist);
+                            recyclerView.setAdapter(recyclerViewAdapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-
-                    myCustomAdapter = new MovieAdapter(MainActivity.this, MovieModelList);
-                    listView.setAdapter((ListAdapter) myCustomAdapter);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-
-
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
         });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
 }
