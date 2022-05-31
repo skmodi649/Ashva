@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         String movie_name = currentItem.getTitle();
         String movie_rating = currentItem.getRating();
-        String image_url = currentItem.getPoster_path();
+        String image_url = "https://image.tmdb.org/t/p/w780/" + currentItem.getPoster_path();
 
         holder.movie_name.setText(movie_name);
         holder.movie_rating.setText(movie_rating);
