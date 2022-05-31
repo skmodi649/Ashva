@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/single_row"
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    android:layout_marginTop="1dp"
     android:layout_marginBottom="1dp"
-    android:backgroundTint="@color/background"
-    android:padding="8dp"
-    android:background="@color/white"
-    android:id="@+id/single_row">
+    android:background="#0B0134"
+    android:backgroundTint="#0B0134"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
 
     <ImageView
+        android:id="@+id/movie_poster"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@drawable/loading_image"
-        android:id="@+id/movie_poster"/>
+        android:background="@drawable/loading_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:orientation="vertical"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Movie Title"
-            android:textColor="@color/white"
+            android:textColor="@color/teal_200"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="10dp"
             android:paddingRight="5dp"
             android:text="0.0"
-            android:textColor="@color/white"
+            android:textColor="@color/teal_200"
             android:textSize="15sp"
             android:textStyle="bold" />
 
