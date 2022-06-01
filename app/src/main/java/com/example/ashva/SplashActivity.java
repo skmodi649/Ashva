@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -16,6 +17,13 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Hiding the Action Bar
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+      actionBar.hide();
+
+
         setContentView(R.layout.splash_activity);
         handler.postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));

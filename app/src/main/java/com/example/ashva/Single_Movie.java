@@ -48,7 +48,7 @@ public class Single_Movie extends AppCompatActivity {
         // using parseColor method
         // with color hash code as its parameter
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#B18F88"));
+                = new ColorDrawable(Color.parseColor("#725E5A"));
 
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
