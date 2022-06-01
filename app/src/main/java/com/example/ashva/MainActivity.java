@@ -90,12 +90,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                                 String Title = result.getString("title");
                                 String ImageUrl = result.getString("poster_path");
                                 String Rating = String.valueOf(result.getDouble("vote_average"));
-                                String ID = String.valueOf(result.getInt("vote_count"));
+                                String ID = String.valueOf(result.getInt("id"));
                                 String Language = result.getString("original_language");
                                 String Overview = result.getString("overview");
                                 String Release_Date = result.getString("release_date");
+                                String voteCount = result.getString("vote_count");
 
-                                movielist.add(new MovieModel(ID, Title, Language, Overview, ImageUrl, Release_Date, Rating));
+                                movielist.add(new MovieModel(ID, Title, Language, Overview, ImageUrl, Release_Date, Rating, voteCount));
                             }
 
                             recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, movielist);
@@ -128,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         SingleMovieIntent.putExtra("Extra_release", clickedItem.getRelease_date());
         SingleMovieIntent.putExtra("Extra_rating", clickedItem.getRating());
         SingleMovieIntent.putExtra("Extra_title", clickedItem.getTitle());
-        SingleMovieIntent.putExtra("Extra_Vote_Count", clickedItem.getId());
+        SingleMovieIntent.putExtra("Extra_Vote_Count", clickedItem.getVote_count());
+        SingleMovieIntent.putExtra("Extra_id", clickedItem.getId());
 
         // Starting the activity
         startActivity(SingleMovieIntent);
