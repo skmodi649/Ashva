@@ -9,13 +9,13 @@
     tools:context=".MainActivity">
 
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="254dp"
         android:scaleType="fitCenter"
         android:elevation="20dp"
-        app:srcCompat="@drawable/back_image" />
+        app:srcCompat="@drawable/back_image" /> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
