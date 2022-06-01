@@ -15,14 +15,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_movie_poster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:elevation="20dp"
-            android:background="@drawable/loading_image" />
-
         <TextView
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
@@ -30,9 +22,17 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:text="Title"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textColor="#8EECC3"
+            android:textSize="45sp"
+            android:textStyle="bold|italic" />
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="20dp"
+            android:background="@drawable/loading_image" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,9 +45,9 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 android:text="Language : "
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+                android:textColor="#F4F4F4"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/movie_language"
@@ -57,8 +57,8 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="en"
-                android:textColor="#000000"
-                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -75,9 +75,9 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 android:text="Release Date : "
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/movie_release_date"
@@ -87,8 +87,8 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="0.0"
-                android:textColor="#000000"
-                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
