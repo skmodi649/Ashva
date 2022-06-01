@@ -16,14 +16,17 @@
 
         <ImageView
             android:id="@+id/iv_movie_poster"
-            android:layout_width="match_parent"
-            android:layout_height="456dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/loading_image" />
 
         <TextView
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="5dp"
             android:text="Title"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -35,19 +38,24 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
                 android:text="Language : "
                 android:textColor="#000000"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/movie_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:padding="5dp"
                 android:text="en"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -58,8 +66,10 @@
 
 
            <TextView
-               android:layout_width="50dp"
+               android:layout_width="60dp"
                android:layout_height="wrap_content"
+               android:padding="5dp"
+               android:layout_margin="5dp"
                android:text="Rating : "
                android:textColor="#000000"
                android:textStyle="bold" />
@@ -67,6 +77,8 @@
            <TextView
                android:id="@+id/movie_rating"
                android:layout_width="wrap_content"
+               android:padding="5dp"
+               android:layout_margin="5dp"
                android:layout_height="wrap_content"
                android:layout_weight="1"
                android:text="0.0"
@@ -81,8 +93,10 @@
 
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
                 android:text="Release Date : "
                 android:textColor="#000000"
                 android:textStyle="bold" />
@@ -91,6 +105,8 @@
                 android:id="@+id/movie_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="0.0"
                 android:textColor="#000000"
@@ -100,6 +116,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="5dp"
             android:text="Overview :"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -109,6 +127,8 @@
             android:id="@+id/movie_overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="5dp"
             android:text="overview..."
             android:textColor="#000000" />
     </LinearLayout>
