@@ -1,6 +1,7 @@
 package com.example.ashva;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,13 +24,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener {
     private JsonArrayRequest request ;
     private RequestQueue requestQueue ;
     private ArrayList<MovieModel> movielist ;
     private RecyclerView recyclerView ;
     private RecyclerViewAdapter recyclerViewAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
                             recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, movielist);
                             recyclerView.setAdapter(recyclerViewAdapter);
+
+
+                            recyclerViewAdapter.setOnItemClickListener(MainActivity.this);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -87,5 +91,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent SingleMovieIntent = new Intent(this, Single_Movie.class);
+        MovieModel clickedItem = movielist.get(position);
+
+        SingleMovieIntent.putExtra("Extra_poster", clickedItem.getPoster_path());
+        SingleMovieIntent.putExtra("Extra_language", clickedItem.getLanguage());
+        SingleMovieIntent.putExtra("Extra_overview", clickedItem.getOverview());
+        SingleMovieIntent.putExtra("Extra_release", clickedItem.getRelease_date());
+        SingleMovieIntent.putExtra("Extra_rating", clickedItem.getRating());
+        SingleMovieIntent.putExtra("Extra_title", clickedItem.getTitle());
+
+        // Starting the activity
+        startActivity(SingleMovieIntent);
     }
 }
