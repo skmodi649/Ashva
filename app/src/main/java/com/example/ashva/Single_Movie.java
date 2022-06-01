@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ashva.Adapters.RecyclerViewAdapter;
 import com.example.ashva.models.MovieModel;
 import com.squareup.picasso.Picasso;
@@ -29,6 +31,8 @@ public class Single_Movie extends AppCompatActivity {
 
     private JsonArrayRequest request ;
     private RequestQueue requestQueue ;
+    public String movie_id, movie_revenue, movie_budget, movie_runTime;
+    public TextView budget, revenue, runTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,7 @@ public class Single_Movie extends AppCompatActivity {
         String release = intent.getStringExtra("Extra_release");
         String rating = intent.getStringExtra("Extra_rating");
         String count = intent.getStringExtra("Extra_Vote_Count");
+        movie_id = intent.getStringExtra("Extra_id");
 
         TextView name, lang, over, rel, rat, vote;
         ImageView post;
@@ -73,6 +78,9 @@ public class Single_Movie extends AppCompatActivity {
         rel = findViewById(R.id.movie_release_date);
         rat = findViewById(R.id.movie_rating);
         vote = findViewById(R.id.movie_vote_count);
+        revenue = findViewById(R.id.movie_revenue);
+        budget = findViewById(R.id.movie_budget);
+        runTime = findViewById(R.id.movie_runtime);
         String image_url = "https://image.tmdb.org/t/p/w780/" + poster;
 
         Picasso.with(this).load(image_url).fit().centerInside().into(post);
@@ -82,32 +90,38 @@ public class Single_Movie extends AppCompatActivity {
         rel.setText(release);
         rat.setText(rating);
         vote.setText(count);
+
+        requestQueue = Volley.newRequestQueue(this);
+        parseJSON();
+
+
     }
 
     // JSON Parsing
 
     private void parseJSON(){
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=496624d35e26fc516f231af5af837238&language=en-US&page=1";
+        String url = "https://api.themoviedb.org/3/movie/" + movie_id + "?api_key=496624d35e26fc516f231af5af837238";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        JSONArray jsonArray = null;
-                        try {
-                            jsonArray = response.getJSONArray("results");
-                            for(int i = 0 ; i < jsonArray.length() ; i++){
-                                JSONObject result = jsonArray.getJSONObject(i);
+                            try {
+                                movie_budget = String.valueOf(response.getLong("budget"));
+                                movie_revenue = String.valueOf(response.getLong("revenue"));
+                                movie_runTime = String.valueOf(response.getInt("runtime"));
 
+                                budget.setText(movie_budget);
+                                revenue.setText(movie_revenue);
+                                runTime.setText(movie_runTime);
 
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                Toast.makeText(Single_Movie.this, "Fail to get data..", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(request);
