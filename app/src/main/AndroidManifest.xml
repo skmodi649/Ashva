@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ashva">
         <activity android:name=".MainActivity"/>
+        <activity android:name=".Single_Movie"/>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

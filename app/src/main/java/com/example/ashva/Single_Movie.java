@@ -33,7 +33,9 @@ public class Single_Movie extends AppCompatActivity {
         rel = findViewById(R.id.movie_release_date);
         rat = findViewById(R.id.movie_rating);
 
-        Picasso.with(this).load(poster).fit().centerInside().into(post);
+        String image_url = "https://image.tmdb.org/t/p/w780/" + poster;
+
+        Picasso.with(this).load(image_url).fit().centerInside().into(post);
         name.setText(title);
         lang.setText(language);
         over.setText(overview);

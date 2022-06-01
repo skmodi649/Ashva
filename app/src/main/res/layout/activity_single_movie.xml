@@ -18,7 +18,7 @@
             android:id="@+id/iv_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="456dp"
-            app:srcCompat="@drawable/loading_image" />
+            android:background="@drawable/loading_image" />
 
         <TextView
             android:id="@+id/movie_title"
