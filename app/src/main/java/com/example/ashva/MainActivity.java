@@ -48,11 +48,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         // using parseColor method
         // with color hash code as its parameter
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#000000"));
+                = new ColorDrawable(Color.parseColor("#D6A297"));
 
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
+
+        // Setting the title of the action bar of the current activity
+
+        actionBar.setTitle("Top Running Movies");
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                                 String Title = result.getString("title");
                                 String ImageUrl = result.getString("poster_path");
                                 String Rating = String.valueOf(result.getDouble("vote_average"));
-                                String ID = String.valueOf(result.getLong("id"));
+                                String ID = String.valueOf(result.getInt("vote_count"));
                                 String Language = result.getString("original_language");
                                 String Overview = result.getString("overview");
                                 String Release_Date = result.getString("release_date");
@@ -124,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         SingleMovieIntent.putExtra("Extra_release", clickedItem.getRelease_date());
         SingleMovieIntent.putExtra("Extra_rating", clickedItem.getRating());
         SingleMovieIntent.putExtra("Extra_title", clickedItem.getTitle());
+        SingleMovieIntent.putExtra("Extra_Vote_Count", clickedItem.getId());
 
         // Starting the activity
         startActivity(SingleMovieIntent);
