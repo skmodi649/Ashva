@@ -10,9 +10,7 @@ public class MovieModel {
     private String release_date;
     private String rating;
 
-    public MovieModel(){
 
-    }
 
     public MovieModel(String id, String title, String language, String overview, String poster_path, String release_date, String rating, String vote_count) {
         this.id = id;
