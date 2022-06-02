@@ -47,7 +47,7 @@
                 android:text="Language : "
                 android:textColor="#F4F4F4"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_language"
@@ -59,7 +59,7 @@
                 android:text="en"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
 
         </LinearLayout>
 
@@ -77,7 +77,7 @@
                 android:text="Release Date : "
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_release_date"
@@ -89,7 +89,7 @@
                 android:text="0.0"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
         </LinearLayout>
 
 
@@ -108,7 +108,7 @@
                 android:text="Vote Count :"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_vote_count"
@@ -120,7 +120,7 @@
                 android:text="100"
                 android:textColor="#F6F5F5"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
         </LinearLayout>
 
 
@@ -139,7 +139,7 @@
                 android:text="Budget :"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_budget"
@@ -151,7 +151,7 @@
                 android:text="100"
                 android:textColor="#F6F5F5"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
         </LinearLayout>
 
 
@@ -170,7 +170,7 @@
                 android:text="Revenue :"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_revenue"
@@ -182,7 +182,7 @@
                 android:text="100"
                 android:textColor="#F6F5F5"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
         </LinearLayout>
 
 
@@ -201,7 +201,7 @@
                 android:text="Runtime :"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/movie_runtime"
@@ -213,7 +213,7 @@
                 android:text="100"
                 android:textColor="#F6F5F5"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|italic" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
