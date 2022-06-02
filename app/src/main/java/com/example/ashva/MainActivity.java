@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         // using parseColor method
         // with color hash code as its parameter
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#D6A297"));
+                = new ColorDrawable(Color.parseColor("#000000"));
 
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
